@@ -1,0 +1,27 @@
+{
+  "name": "spring-hack",
+  "version": "1.0.0",
+  "description": "spring-hack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node back-end/server.js",
+    "server": "nodemon back-end/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Basil-Kim/spring-hack.git"
+  },
+  "author": "Chun, Sharon, Basil, Jyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Basil-Kim/spring-hack/issues"
+  },
+  "homepage": "https://github.com/Basil-Kim/spring-hack#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.2.6",
+    "nodemon": "^2.0.15"
+  }
+}
