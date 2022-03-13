@@ -1,0 +1,46 @@
+
+#card {
+
+    border: solid black;
+    grid-template-columns: 10% 20% 50% 20%;
+    grid-template-rows: 50% 50%;
+    display: grid;
+    max-width: 100vw;
+    max-height: 10vw;
+}
+
+#circle {
+    border-radius: 50%;
+    background-color: green;
+    max-height: 10vw;
+    
+    max-width: 10vw;
+    display: grid;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+#item {
+    display: grid;
+    font-size: 3vw;
+    grid-column: 3/4;
+    grid-row: 1;
+    max-width: 10vw;
+    max-height: 10vw;
+
+}
+
+.bar {
+    display: grid;
+    grid-column: 3 /span 3;
+    grid-row: 2 / span 2;
+    max-width: 100vw;
+    max-height: 10vw;
+}
+
+
+
+
+
+
+
