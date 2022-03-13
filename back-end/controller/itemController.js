@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 // @route GET/fridge/items
 // @access private
 const getItems = asyncHandler(async (req, res) => {
-  const items = await Item.find({user: req.user.id})
+  const items = await Item.find({ user: req.user.id })
 
   res.status(200).json(items)
 })
@@ -25,7 +25,7 @@ const postItem = asyncHandler(async (req, res) => {
   date.setDate(date.getDate() + parseInt(req.body.dayBest))
 
   const item = await Item.create({
-    user:req.user.id,
+    user: req.user.id,
     itemName: req.body.name,
     quantity: parseInt(req.body.quantity),
     dateAdded: req.body.dateAdded,
@@ -45,22 +45,21 @@ const postItem = asyncHandler(async (req, res) => {
 // @access private
 const updateItem = asyncHandler(async (req, res) => {
   const item = await Item.findById(req.params.id)
-  
+
   if (!item) {
     res.status(400)
     throw new Error('item not found.')
   }
 
-  const user = await User.findById(req.user.id)
 
   // Check if user exist
-  if(!user){
+  if (!req.user) {
     res.status(401)
     throw new Error('User not found')
   }
 
   //Check for the item id and user id is matching
-  if(item.user.toString() !== req.user.id){
+  if (item.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized to modify this item')
   }
@@ -78,29 +77,28 @@ const updateItem = asyncHandler(async (req, res) => {
 // @route DELETE/fridge/items/:id
 // @access private
 const deleteItem = asyncHandler(async (req, res) => {
-  
+
   const item = await Item.findById(req.params.id)
-  if(!item){
+  if (!item) {
     res.status(400)
     throw new Error('Item not foun')
   }
 
-  const user = await User.findById(req.user.id)
 
   // Check if user exist
-  if(!user){
+  if (!req.user) {
     res.status(401)
     throw new Error('User not found')
   }
-  
+
   //Check for the item id and user id is matching
-  if(item.user.toString() !== user.id){
+  if (item.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized to modify this item')
   }
-  
-  
-  
+
+
+
   await item.deleteOne()
 
   res.status(200).json({ id: req.params.id })
