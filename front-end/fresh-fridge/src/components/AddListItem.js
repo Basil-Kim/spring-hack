@@ -1,9 +1,9 @@
 import { React } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import axios from "axios";
 
 const Styles = styled.div`
- background: lavender;
  padding: 10px;
 
  h1 {
@@ -69,7 +69,13 @@ function AddListItem() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    axios
+      .get("http://localhost:4000/fridge/items/")
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.data));
+  };
 
   const onError = (errors) => {
     console.log("ERRROR oh no");
@@ -83,7 +89,7 @@ function AddListItem() {
     <Styles>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <label>Name</label>
-        <select name="name" {...register("name")} onBlur={handleBlur}>
+        <select name="name" {...register("itemName")} onBlur={handleBlur}>
           <option value="apple">Apple</option>
           <option value="banana">Banana</option>
           <option value="addNewItem">Add New Item</option>
@@ -111,7 +117,7 @@ function AddListItem() {
         <input
           name="dayBest"
           type="number"
-          {...register("dayBest", { required: true, min: 1 })}
+          {...register("daysToExpire", { required: true, min: 1 })}
         />
         <span className="error">
           {errors?.dayBest?.type === "min" && <p>Minimum is 1</p>}

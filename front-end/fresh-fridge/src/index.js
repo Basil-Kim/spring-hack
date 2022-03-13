@@ -7,11 +7,7 @@ import AddListItem from "./components/AddListItem";
 
 ReactDOM.render(
   <React.StrictMode>
-
-<FreshBar/>
-<FreshBar/>
-<FreshBar/>
-<FreshBar/>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
