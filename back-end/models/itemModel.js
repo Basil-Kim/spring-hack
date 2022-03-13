@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const itemSchema = mongoose.Schema({
+  user:{
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'user'
+  },
   itemName: {
     type: String,
     required: [true, 'Please add an item name']
