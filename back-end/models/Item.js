@@ -16,15 +16,10 @@ let Item = new itemSchema(
       type: Date,
       required: [true, "Please indicate the date added to the fridge"],
     },
-    dateExpired: {
-      type: Date,
-      required: false,
-    },
     daysToExpire: {
       type: Number,
       required: [true, "Please add number of days until expired"],
     },
-
     color: {
       type: String,
       required: false,

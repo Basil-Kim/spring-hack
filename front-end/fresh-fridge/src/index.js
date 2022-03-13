@@ -6,8 +6,7 @@ import FreshBar from "./components/FreshBar";
 
 ReactDOM.render(
   <React.StrictMode>
-  <FreshBar/>
-
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
